@@ -4,10 +4,8 @@ const app = express();
 
 app.use(express.json());
 
-// Configurar o access token do Mercado Pago via variável de ambiente
 mercadopago.configurations.setAccessToken(process.env.MP_ACCESS_TOKEN);
 
-// Endpoint para criar checkout
 app.post("/create-checkout", async (req, res) => {
   const { amount, description, email } = req.body;
 
@@ -43,6 +41,5 @@ app.post("/create-checkout", async (req, res) => {
   }
 });
 
-// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
